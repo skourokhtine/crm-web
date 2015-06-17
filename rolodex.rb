@@ -8,10 +8,8 @@ class Rolodex
 	end
 
 
-	def add_contact(id, first_name, last_name, email, notes)
-		contact = Contact.new(@@id, first_name, last_name, email, notes)
+	def add_contact(contact)
 		@@id += 1		
-		
 		@contacts << contact
 	end
 
