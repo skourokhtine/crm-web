@@ -12,21 +12,19 @@ end
 # a particular request method in order to get a specific
 #response for this request.
 
+get "/contacts" do
+  erb :contacts
+end
+
 get '/contacts/new' do
 	erb :contacts_new
 end
 
-get "/contacts" do
-  # @contacts = []
-  # @contacts << Contact.new(1000, "Serguei", "Kourokhtine", "skourokhtine@gmail.com", "Bitmaker")
-  # @contacts << Contact.new(1001,"Mark", "Zuckerberg", "mark@facebook.com", "CEO")
-  # @contacts << Contact.new(1002, "Sergey", "Brin", "sergey@google.com", "Co-Founder")
-
-  erb :contacts
+post '/contacts' do
+  contacts_new = Contact.new(params[:id], [:first_name], params[:last_name], params[:email], params[:note])
+  $rolodex.add_contact(contacts_new)
+  redirect to('/contacts')
 end
-
-
-
 
 
 
