@@ -1,15 +1,40 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
 	<meta charset="UTF-8">
-	<title>Layout</title>
-	<link rel="stylesheet" href="style.css">
+	<title>CRM</title>
+	<link rel="stylesheet" href="/style.css">
 </head>
 
 <body>
 
 <%= yield %>	
 
-<footer></footer>
+<nav> 
+<ul>
+
+	<%
+		links = {
+			"/" => "HOME",
+			"/contacts/new" => "CREATE CONTACT",
+			"/contacts" => "VIEW ALL CONTACS",
+		}
+	%>
+
+	<% links.each do |url, title| %>
+		<li>
+			<% if url == request.fullpath %>
+				<b><%= title %></b>
+			<% else %>
+				<a href="<%= url %>"><%= title %></a>
+			<% end %>
+		</li>
+	<% end %>
+
+</ul> 
+</nav>
+
+<footer>&copy;2015 Serguei K. <a href="mailto:skourokhtine@gmail.com">| skourokhtine@gmail.com</a></footer>
 </body>
 </html>

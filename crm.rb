@@ -1,22 +1,24 @@
 require_relative 'rolodex'
 require_relative 'contact'
 require 'sinatra' 
+require 'sinatra/reloader'
 
 $rolodex= Rolodex.new
 
 get '/' do  
-	@crm_app_name = "My CRM"
 	erb :index
 end
 # '/' # This block of code is route. It allows me to match 
 # a particular request method in order to get a specific
 #response for this request.
 
+
+
 get "/contacts" do
   erb :contacts
 end
 
-get '/contacts_new' do
+get '/contacts/new' do
 	erb :contacts_new
 end
 
